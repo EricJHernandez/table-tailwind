@@ -1,6 +1,7 @@
 // src/App.js
 import React from "react";
 import Table, { AvatarCell, SelectColumnFilter, StatusPill } from "./Table";
+import { SignupPage } from "./page/signup/SignupPage";
 
 const getData = () => {
 	const data = [
@@ -69,47 +70,52 @@ const getData = () => {
 }
 
 export const App = () => {
-  const columns = React.useMemo(() => [
-    {
-      Header: "Name",
-      accessor: 'name',
-      Cell: AvatarCell,
-      imgAccessor: "imgUrl",
-      emailAccessor: "email",
-    },
-    {
-      Header: "Title",
-      accessor: 'title',
-    },
-    {
-      Header: "Status",
-      accessor: 'status',
-      Cell: StatusPill,
-    },
-    {
-      Header: "Age",
-      accessor: 'age',
-    },
-    {
-      Header: "Role",
-      accessor: 'role',
-      Filter: SelectColumnFilter,  // new
-      filter: 'includes',
-    },
-  ], [])
+	const columns = React.useMemo(() => [
+		{
+			Header: "Name",
+			accessor: 'name',
+			Cell: AvatarCell,
+			imgAccessor: "imgUrl",
+			emailAccessor: "email",
+		},
+		{
+			Header: "Title",
+			accessor: 'title',
+		},
+		{
+			Header: "Status",
+			accessor: 'status',
+			Cell: StatusPill,
+		},
+		{
+			Header: "Age",
+			accessor: 'age',
+		},
+		{
+			Header: "Role",
+			accessor: 'role',
+			Filter: SelectColumnFilter,  // new
+			filter: 'includes',
+		},
+	], [])
 
 	const data = React.useMemo(() => getData(), []);
 
 	return (
-		<div className="min-h-screen bg-gray-100 text-gray-900">
-			<main className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-				<div className="">
-					<h1 className="text-xl font-semibold">React Table + Tailwind CSS = ❤</h1>
-				</div>
-				<div className="mt-4">
-					<Table columns={columns} data={data} />
-				</div>
-			</main>
+		// <div className="min-h-screen bg-gray-100 text-gray-900">
+		// 	<main className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+		// 		<div className="">
+		// 			<h1 className="text-xl font-semibold">React Table + Tailwind CSS = ❤</h1>
+		// 		</div>
+		// 		<div className="mt-4">
+		// 			<Table columns={columns} data={data} />
+		// 		</div>
+		// 	</main>
+		// </div>
+		<div className="flex items-center justify-center">
+			<div className="w-full sm:w-w-2xl max-w-3xl h-1/2  mt-[2rem]">
+				<SignupPage />
+			</div>
 		</div>
 	);
 }
