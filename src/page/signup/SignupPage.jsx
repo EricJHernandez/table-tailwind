@@ -52,21 +52,11 @@ export const SignupPage = () => {
 
     const handleReset = () => {
         formik.resetForm();
-        // formik.setValues({
-        //     values: {
-        //         firstName: 'hol',
-        //         lastName: '',
-        //         email: '',
-        //         genero: ''
-        //     }
-        // })
     }
 
 
     return (
-        // <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div
-            // onSubmit={formik.handleSubmit}
             className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
         >
             <div className="sm:col-span-3">
@@ -114,18 +104,16 @@ export const SignupPage = () => {
                     formik={formik}
                     data={genero}
                     optionDefault="Selecione su genero"
+                    value={formik.values.genero}
                     error={formik.touched.genero && formik.errors.genero}
                 />
             </div>
             <button
-                // type='button'
                 onClick={handleReset}
             >Restablecer</button>
             <button
-                // type='submit'
                 onClick={() => formik.handleSubmit()}
             >enviar</button>
         </div>
-        // </div>
     );
 };
