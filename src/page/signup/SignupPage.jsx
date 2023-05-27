@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFormik } from 'formik';
 import { Input } from '../../components/Input';
 import { InputSelect } from '../../components/InputSelect';
@@ -34,14 +33,16 @@ const genero = [
     { value: "Mujer" },
 ]
 
+
+
 export const SignupPage = () => {
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
             lastName: '',
             email: '',
             genero: ''
-
         },
         validate,
         onSubmit: values => {
@@ -49,9 +50,25 @@ export const SignupPage = () => {
         },
     });
 
+    const handleReset = () => {
+        formik.resetForm();
+        // formik.setValues({
+        //     values: {
+        //         firstName: 'hol',
+        //         lastName: '',
+        //         email: '',
+        //         genero: ''
+        //     }
+        // })
+    }
+
 
     return (
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        // <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div
+            // onSubmit={formik.handleSubmit}
+            className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
+        >
             <div className="sm:col-span-3">
                 <Input
                     id="firstName"
@@ -60,6 +77,7 @@ export const SignupPage = () => {
                     label="First Name"
                     placeholder="Ingresa un nombre"
                     formik={formik}
+                    value={formik.values.firstName}
                     error={formik.touched.firstName && formik.errors.firstName}
                 />
             </div>
@@ -71,6 +89,7 @@ export const SignupPage = () => {
                     label="Last Name"
                     placeholder="Ingresa un last"
                     formik={formik}
+                    value={formik.values.lastName}
                     error={formik.touched.lastName && formik.errors.lastName}
                 />
             </div>
@@ -82,6 +101,7 @@ export const SignupPage = () => {
                     label="Email"
                     placeholder="Ingresa un email"
                     formik={formik}
+                    value={formik.values.email}
                     error={formik.touched.email && formik.errors.email}
                 />
             </div>
@@ -98,10 +118,14 @@ export const SignupPage = () => {
                 />
             </div>
             <button
+                // type='button'
+                onClick={handleReset}
+            >Restablecer</button>
+            <button
+                // type='submit'
                 onClick={() => formik.handleSubmit()}
-            >
-                enviar
-            </button>
+            >enviar</button>
         </div>
+        // </div>
     );
 };

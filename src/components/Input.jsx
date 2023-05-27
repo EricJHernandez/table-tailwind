@@ -8,6 +8,7 @@ export const Input = ({
     placeholder,
     disabled,
     formik,
+    value,
     error
 }) => {
     return (
@@ -30,7 +31,7 @@ export const Input = ({
                     type={type}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.name}
+                    value={value}
                     placeholder={placeholder}
                     disabled={disabled}
                     className={`
